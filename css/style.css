@@ -10,12 +10,20 @@
   text-decoration: none;
 }
 
+img[src=""] {
+  display: none;
+}
+
 body {
   background: #e8e8e8;
 }
 
 .flex {
   display: flex;
+}
+
+li {
+  list-style: none;
 }
 
 /*gradient*/
@@ -40,7 +48,7 @@ body {
 
 .logo-center {
   height: 55px;
-  margin-left: -60px;
+  margin: 0 auto;
   display: flex;
 }
 
@@ -49,6 +57,7 @@ body {
   font-weight: bold;
   padding-top: 15px;
   margin-left: 5px;
+  min-width: 160px;
 }
 
 /*sidebar*/
@@ -64,6 +73,7 @@ body {
 }
 
 .topic-title {
+  font-size: 16px;
   line-height: 44px;
   padding-left: 35px;
   position: relative;
@@ -88,7 +98,7 @@ body {
 
 .sub-topics {
   min-width: 300px;
-  font-size: 10px;
+  font-size: 12px;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.25s ease-out;
@@ -136,11 +146,15 @@ body {
   position: relative;
 }
 
-.slide-show-container h3 {
-  color: #5b5b5b;
-  font-size: 20px;
-  font-weight: bold;
+.slide-show-container .steps {
   padding: 20px 0;
+}
+
+.slide-show-container .steps li {
+  color: #5b5b5b;
+  font-size: 18px;
+  padding: 3px 0;
+  font-weight: bold;
 }
 
 .slides {
@@ -194,6 +208,11 @@ body {
   transform: scale(2);
 }
 
+.click svg#arrow-right {
+  opacity: 1;
+  animation: scaleDownRight 3s;
+}
+
 /*animation*/
 @keyframes slideLeft {
   from {
@@ -218,6 +237,10 @@ body {
   from {
     transform: scale(2);
     fill: #5b5b5b;
+  }
+
+  to {
+    transform: scale(1);
   }
 }
 

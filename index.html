@@ -7,100 +7,64 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="./css/style.css">
-
-
-
     <script src="./data/data.js" defer></script>
     <script src="./js/index.js" defer></script>
   </head>
   <body>
     
     <div class="flex">
-
       <!--sidebar-->
       <div class="sidebar bg-blue-gradient">
-
-      <!--logo-->
-      <div class="logo-container">
+        <!--logo-->
+        <div class="logo-container"> 
           <div class="logo-center">
             <div class="logo"><img src="./assets/missile-icon.png"></div>
-            <h1>SAS</h1>
+            <h1>SAS Doc</h1>
           </div>
-      </div> 
+        </div> 
 
-      <!--topic nav links-->
         <div id="topic-container">
+          <!-- [[topics insert here]] -->
         </div>
-      </div>
+      </div><!--end sidebar-->
 
-
-      <div class="slide-show-container">
-        <div class="slides">
-          <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h3>
-          <div class="landscape">
-              <img class="fit slide-image" src="./assets/slides/slide1.jpg">
-          </div>
-        </div>
-
-        <div class="slides">
-            <h3>consectetur adipiscing elit2 Lorem ipsum dolor sit amet, consectetur adipiscing elit2</h3>
-            <div class="landscape">
-                <img class="fit slide-image" src="./assets/slides/slide2.png">
-            </div>
-        </div>
-
-        <div class="slides">
-            <h3>consectetur adipiscing elit2 Lorem ipsum dolor sit amet, consectetur adipiscing elit2</h3>
-            <div class="landscape">
-                <img class="fit slide-image" src="">
-            </div>
-        </div>
-
-        <div class="slides">
-            <h3>consectetur adipiscing elit2 Lorem ipsum dolor sit amet, consectetur adipiscing elit2</h3>
-            <div class="landscape">
-                <img class="fit slide-image" src="">
-            </div>
-        </div>
-
-        <div class="arrows">
-            <svg id="arrow-left" width="20" height="20" transform="scale(-1, 1)" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="10" /><path fill-rule="evenodd" clip-rule="evenodd" d="M12.75 10.843a.853.853 0 000-1.211l-.003-.004-3.023-3.023a.856.856 0 10-1.21 1.211l2.42 2.421-2.415 2.416-.006.006a.856.856 0 101.211 1.21l3.027-3.026z" fill="#fff"/></svg>
-            <svg id="arrow-right" width="20" height="20" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="10" /><path fill-rule="evenodd" clip-rule="evenodd" d="M12.75 10.843a.853.853 0 000-1.211l-.003-.004-3.023-3.023a.856.856 0 10-1.21 1.211l2.42 2.421-2.415 2.416-.006.006a.856.856 0 101.211 1.21l3.027-3.026z" fill="#fff"/></svg>
+      
+      <div id="slide-show-container" class="slide-show-container">
+        <!-- [[slides insert here]] -->
+        <div id="arrows" class="arrows click">
+          <svg id="arrow-left"  width="20" height="20" transform="scale(-1, 1)" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="10" /><path fill-rule="evenodd" clip-rule="evenodd" d="M12.75 10.843a.853.853 0 000-1.211l-.003-.004-3.023-3.023a.856.856 0 10-1.21 1.211l2.42 2.421-2.415 2.416-.006.006a.856.856 0 101.211 1.21l3.027-3.026z" fill="#fff"/></svg>
+          <svg id="arrow-right" width="20" height="20" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="10" /><path fill-rule="evenodd" clip-rule="evenodd" d="M12.75 10.843a.853.853 0 000-1.211l-.003-.004-3.023-3.023a.856.856 0 10-1.21 1.211l2.42 2.421-2.415 2.416-.006.006a.856.856 0 101.211 1.21l3.027-3.026z" fill="#fff"/></svg>
         </div>
       </div>
     </div> <!--flex-->
 
-
-
-
 <!--template topic-->
-    <script id="template-topic" type="text/template">
-      <div class="topic">
-          <div class="topic-title">{{topicTitle}}</div>
-          <div class="sub-topics">
-            <div class="padding">
-              {{links}}
-            </div>
-          </div>
-       </div>
-    </script>
-
-    <!--link template-->
-    <script id="template-link" type="text/template">
-      <a class="slideLink">{{name}}</a>
-    </script>
-
-
-  <!--template slide image-->
-  <script id="template-slide" type="text/template">
-    <div class="slides">
-      <h3 class="steps">{{step}}</h3>
-      <div class="landscape">
-          <img class="fit slide-image" src="{{imageUrl}}">
+<script id="template-topic" type="text/template">
+  <div class="topic">
+      <div class="topic-title">{{topicTitle}}</div>
+      <div class="sub-topics">
+        <div class="padding">
+          {{links}}
+        </div>
       </div>
     </div>
-  </script>
+</script>
 
+<!--template links-->
+<script id="template-link" type="text/template">
+  <a class="slideLink">{{name}}</a>
+</script>
+
+
+<!--template slide image-->
+<script id="template-slide" type="text/template">
+  <div class="slides">
+    <ul class="steps">{{steps}}</ul>
+    <div class="landscape">
+        <img class="fit slide-image" src="{{image}}" style="{{none}}">
+    </div>
+  </div>
+</script>
 
   </body>
 </html>
