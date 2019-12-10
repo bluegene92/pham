@@ -208,11 +208,6 @@ li {
   transform: scale(2);
 }
 
-.click svg#arrow-right {
-  opacity: 1;
-  animation: scaleDownRight 3s;
-}
-
 /*animation*/
 @keyframes slideLeft {
   from {

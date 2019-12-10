@@ -26,6 +26,9 @@ function init() {
   showSlide(slideIndex);
   arrowLeft.onclick = leftArrowClick;
   arrowRight.onclick = rightArrowClick;
+  arrowRight.onclick = function(e) {
+    console.log(e);
+  };
   document.onkeydown = keyDetection;
   initTopicTitlesClick();
   initSlideLinks();
@@ -91,6 +94,7 @@ function buildStepsHTML(stepsArr) {
 }
 
 function leftArrowClick(e) {
+  console.log(e);
   showSlide(--slideIndex, SLIDE_TYPE.Left);
 }
 
@@ -107,11 +111,8 @@ function keyDetection(e) {
   }
 
   if (e.keyCode === KEY_ARROW_DOWN || e.keyCode === KEY_ARROW_RIGHT) {
-    var arrows = document.getElementById("arrows");
-    console.log(arrows);
-    // arrowRight.style.animation = "";
-    // arrowRight.style.animation = "scaleDownRight 0.3s";
-    // setTimeout(resetArrowsAnimation, 300);
+    arrowRight.style.animation = "scaleDownRight 0.3s";
+    setTimeout(resetArrowsAnimation, 300);
     showSlide(++slideIndex, SLIDE_TYPE.Right);
   }
 }
