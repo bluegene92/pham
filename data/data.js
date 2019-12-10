@@ -1,15 +1,17 @@
+const imagePath = "./assets/slides/";
+
 const data = [
   {
     topic: "Main Topic 1.0!",
     slides: [
       {
-        name: "Link1",
-        imgUrl: "My Image",
+        name: "Step 1",
+        imgUrl: imagePath + "slide1.jpg",
         steps: ["Step1 - do this"]
       },
       {
-        name: "Link2",
-        imgUrl: "My Image",
+        name: "Step 2",
+        imgUrl: imagePath + "slide2.png",
         steps: ["Step1 - do this", "do that"]
       }
     ]
@@ -18,12 +20,12 @@ const data = [
     topic: "Main Topic 2.0",
     slides: [
       {
-        name: "Link3",
+        name: "Step 1",
         imgUrl: "",
         steps: ["Step1", "Step2", "Step3"]
       },
       {
-        name: "Link4",
+        name: "Step 2 - 6",
         imgUrl: "",
         steps: ["Step1", "Step2", "Step3"]
       }

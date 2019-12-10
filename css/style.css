@@ -53,16 +53,17 @@ body {
 
 /*sidebar*/
 .sidebar {
+  display: block;
   color: #fff;
+  min-width: 250px;
   width: 300px;
-  min-width: 300px;
+  width: 300px;
   height: 100vh;
-  font-weight: 300;
-  overflow-y: scroll;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .topic-title {
-  width: 300px;
   line-height: 44px;
   padding-left: 35px;
   position: relative;
@@ -74,7 +75,7 @@ body {
   background: rgba(107, 168, 224, 1);
 }
 
-.open::before {
+.open:before {
   content: "";
   position: absolute;
   width: 15px;
@@ -86,6 +87,7 @@ body {
 }
 
 .sub-topics {
+  min-width: 300px;
   font-size: 10px;
   max-height: 0;
   overflow: hidden;
@@ -179,11 +181,13 @@ body {
   fill: #c4c4c4;
   transition: 0.3s;
 }
+
 #arrow-left:hover {
   fill: #5b5b5b;
   cursor: pointer;
   transform: scale(-2, 2);
 }
+
 #arrow-right:hover {
   fill: #5b5b5b;
   cursor: pointer;

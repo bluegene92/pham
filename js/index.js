@@ -35,15 +35,28 @@ function loadData() {
 
 function buildTopicHTML() {
   var template = document.getElementById("template-topic");
-  var templateHtml = template.innerHTML;
+  var templateTopicHtml = template.innerHTML;
   if (data.length > 0) {
-    for (i = 0; i < data.length; ++i) {
-      console.log(data[i]);
-      let topicHTML = "";
-      topicHTML = templateHtml.replace(/{{topicTitle}}/g, "dat");
-      topicContainer.innerHTML += topicHTML;
+    for (let i = 0; i < data.length; ++i) {
+      let topicHtml = templateTopicHtml.replace(
+        /{{topicTitle}}/g,
+        data[i].topic
+      );
+      let result = buildSubTopicsHTML(data[i].slides, topicHtml);
+      topicContainer.innerHTML += result;
     }
   }
+}
+
+function buildSubTopicsHTML(slides, topicHtml) {
+  var template = document.getElementById("template-link");
+  var templateLinkHtml = template.innerHTML;
+  var linksHtml = "";
+  for (let i = 0; i < slides.length; ++i) {
+    linksHtml += templateLinkHtml.replace(/{{name}}/g, slides[i].name);
+  }
+  let result = topicHtml.replace(/{{links}}/g, linksHtml);
+  return result;
 }
 
 function leftArrowClick(e) {
@@ -101,10 +114,12 @@ function boundCheck(index, lowBound, highBound) {
 
 function updateSlideIndicator(index) {
   var slideLinks = document.getElementsByClassName("slideLink");
-  for (i = 0; i < slideLinks.length; ++i) {
-    slideLinks[i].classList.remove("active-slide-indicator");
+  if (slideLinks.length > 0) {
+    for (let i = 0; i < slideLinks.length; ++i) {
+      slideLinks[i].classList.remove("active-slide-indicator");
+    }
+    slideLinks[index].classList.add("active-slide-indicator");
   }
-  slideLinks[index].classList.add("active-slide-indicator");
 }
 
 function resetArrowsAnimation() {
@@ -124,7 +139,7 @@ function updateSlideAnimation(slideType) {
 
 function initTopicTitlesClick() {
   var topicTitles = document.getElementsByClassName("topic-title");
-  for (i = 0; i < topicTitles.length; ++i) {
+  for (let i = 0; i < topicTitles.length; ++i) {
     topicTitles[i].onclick = debounce(handleTopicTitlesClick, 250, true);
   }
 }
@@ -140,14 +155,14 @@ function handleTopicTitlesClick(e) {
 }
 
 function initSlideLinks() {
-  for (i = 0; i < slideLinks.length; ++i) {
+  for (let i = 0; i < slideLinks.length; ++i) {
     slideLinks[i].index = i;
     slideLinks[i].onclick = handleSlideLinkClick;
   }
 }
 
 function handleSlideLinkClick(e) {
-  for (i = 0; i < slideLinks.length; ++i) {
+  for (let i = 0; i < slideLinks.length; ++i) {
     slideLinks[i].classList.remove("active-slide-indicator");
   }
   e.target.classList.add("active-slide-indicator");
