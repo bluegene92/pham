@@ -10,7 +10,7 @@ const slides = document.getElementsByClassName("slides");
 const topicContainer = document.getElementById("topic-container");
 const slideShowContainer = document.getElementById("slide-show-container");
 const sidebar = document.getElementById("sidebar");
-const hamburger = document.getElementById("hamburger");
+const pageCounter = document.getElementById("page-counter");
 const IMAGE_PATH = "./assets/slides/";
 
 const SLIDE_TYPE = {
@@ -29,9 +29,6 @@ function init() {
   showSlide(slideIndex);
   arrowLeft.onclick = leftArrowClick;
   arrowRight.onclick = rightArrowClick;
-  arrowRight.onclick = function(e) {
-    console.log(e);
-  };
   document.onkeydown = keyDetection;
   initTopicTitlesClick();
   initSlideLinks();
@@ -97,7 +94,6 @@ function buildStepsHTML(stepsArr) {
 }
 
 function leftArrowClick(e) {
-  console.log(e);
   showSlide(--slideIndex, SLIDE_TYPE.Left);
 }
 
@@ -122,7 +118,6 @@ function keyDetection(e) {
   if (e.keyCode === KEY_TAB) {
     e.preventDefault();
     sidebar.classList.toggle("sidebar-close");
-    hamburger.classList.toggle("is-active");
   }
 }
 
@@ -132,6 +127,7 @@ function showSlide(index, slideType = SLIDE_TYPE.Right) {
   updateSlideAnimation(slideType);
   hide(slides);
   show(slides, slideIndex);
+  updatePageCounter();
 }
 
 function hide(slides) {
@@ -145,6 +141,11 @@ function show(slides, index) {
     slides[index].style.display = "block";
     slides[index].style.position = "absolute";
   }
+}
+
+function updatePageCounter() {
+  pageCounter.innerHTML =
+    "<p>" + (slideIndex + 1) + "/" + slides.length + "</p>";
 }
 
 function boundCheck(index, lowBound, highBound) {
@@ -168,8 +169,6 @@ function updateSlideIndicator(index) {
 }
 
 function resetArrowsAnimation() {
-  console.log("reset");
-
   (arrowLeft.style.animation = ""), (arrowRight.style.animation = "");
 }
 
@@ -225,7 +224,6 @@ function handleSlideLinkClick(e) {
   } else {
     showSlide(slideIndex, SLIDE_TYPE.Right);
   }
-  console.log(`before: ${beforeIndex} slide index: ${slideIndex}`);
 }
 
 function debounce(func, wait, immediate) {
@@ -242,9 +240,4 @@ function debounce(func, wait, immediate) {
     timeout = setTimeout(later, wait);
     if (callNow) func.apply(context, args);
   };
-}
-
-function hamburgerToggle() {
-  console.log("l");
-  sidebar.classList.toggle("sidebar-close");
 }

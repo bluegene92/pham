@@ -28,5 +28,90 @@ const data = [
         steps: ["Step1", "Step2", "Step3", "Step1", "Step2", "Step3"]
       }
     ]
+  },
+  {
+    topic: "Main Topic 2.0",
+    slides: [
+      {
+        name: "Step 1",
+        image: "",
+        steps: ["Step1", "Step2", "Step3"]
+      },
+      {
+        name: "Step 2 - 6",
+        image: "",
+        steps: ["Step1", "Step2", "Step3", "Step1", "Step2", "Step3"]
+      }
+    ]
+  },
+  {
+    topic: "Main Topic 2.0",
+    slides: [
+      {
+        name: "Step 1",
+        image: "",
+        steps: ["Step1", "Step2", "Step3"]
+      },
+      {
+        name: "Step 2 - 6",
+        image: "",
+        steps: ["Step1", "Step2", "Step3", "Step1", "Step2", "Step3"]
+      },
+      {
+        name: "Step 1",
+        image: "",
+        steps: ["Step1", "Step2", "Step3"]
+      },
+      {
+        name: "Step 2 - 6",
+        image: "",
+        steps: ["Step1", "Step2", "Step3", "Step1", "Step2", "Step3"]
+      },
+      {
+        name: "Step 1",
+        image: "",
+        steps: ["Step1", "Step2", "Step3"]
+      },
+      {
+        name: "Step 2 - 6",
+        image: "",
+        steps: ["Step1", "Step2", "Step3", "Step1", "Step2", "Step3"]
+      }
+    ]
+  },
+  {
+    topic: "Main Topic 2.0",
+    slides: [
+      {
+        name: "Step 1",
+        image: "",
+        steps: ["Step1", "Step2", "Step3"]
+      },
+      {
+        name: "Step 2 - 6",
+        image: "",
+        steps: ["Step1", "Step2", "Step3", "Step1", "Step2", "Step3"]
+      },
+      {
+        name: "Step 1",
+        image: "",
+        steps: ["Step1", "Step2", "Step3"]
+      },
+      {
+        name: "Step 2 - 6",
+        image: "",
+        steps: ["Step1", "Step2", "Step3", "Step1", "Step2", "Step3"]
+      },
+      {
+        name: "Step 1",
+        image: "",
+        steps: ["Step1", "Step2", "Step3"]
+      },
+      {
+        name: "Step 2 - 6",
+        image: "",
+        steps: ["Step1", "Step2", "Step3", "Step1", "Step2", "Step3"]
+      }
+    ]
   }
 ];
