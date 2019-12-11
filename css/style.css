@@ -70,6 +70,17 @@ li {
   height: 100vh;
   overflow-y: auto;
   overflow-x: hidden;
+  transition: 0.3s ease-out;
+}
+
+.sidebar-close {
+  width: 0;
+  min-width: 0;
+  transition: 0.3s ease-in;
+}
+
+.sidebar-close .topic-title {
+  opacity: 0;
 }
 
 .topic-title {
@@ -78,7 +89,9 @@ li {
   padding-left: 35px;
   position: relative;
   background: rgba(107, 168, 224, 0.6);
+  overflow: hidden;
   cursor: pointer;
+  transition: 0.3s;
 }
 
 .open {
@@ -138,19 +151,18 @@ li {
   background: #e85454;
 }
 
-.slide-show-container {
-  min-width: 400px;
-  max-width: 1200px;
+.slide-shows {
+  max-width: 900px;
   width: 95%;
   margin: 0 auto;
   position: relative;
 }
 
-.slide-show-container .steps {
+.slide-shows .steps {
   padding: 20px 0;
 }
 
-.slide-show-container .steps li {
+.slide-shows .steps li {
   color: #5b5b5b;
   font-size: 18px;
   padding: 3px 0;
@@ -158,7 +170,7 @@ li {
 }
 
 .slides {
-  margin: 60px;
+  margin: 30px 40px;
 }
 
 .fit {
@@ -180,11 +192,12 @@ li {
   animation: slideLeft 0.3s ease-out;
 }
 
-.arrows {
+#arrows {
+  border: 1px solid red;
   left: 50%;
   margin-left: -50px;
-  width: 70px;
-  bottom: 10%;
+  width: 100px;
+  bottom: 55px;
   position: absolute;
   display: flex;
   justify-content: space-between;

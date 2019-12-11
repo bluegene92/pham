@@ -2,12 +2,15 @@ const KEY_ARROW_UP = 38;
 const KEY_ARROW_DOWN = 40;
 const KEY_ARROW_LEFT = 37;
 const KEY_ARROW_RIGHT = 39;
+const KEY_TAB = 9;
 const arrowLeft = document.getElementById("arrow-left");
 const arrowRight = document.getElementById("arrow-right");
 const slideLinks = document.getElementsByClassName("slideLink");
 const slides = document.getElementsByClassName("slides");
 const topicContainer = document.getElementById("topic-container");
 const slideShowContainer = document.getElementById("slide-show-container");
+const sidebar = document.getElementById("sidebar");
+const hamburger = document.getElementById("hamburger");
 const IMAGE_PATH = "./assets/slides/";
 
 const SLIDE_TYPE = {
@@ -114,6 +117,12 @@ function keyDetection(e) {
     arrowRight.style.animation = "scaleDownRight 0.3s";
     setTimeout(resetArrowsAnimation, 300);
     showSlide(++slideIndex, SLIDE_TYPE.Right);
+  }
+
+  if (e.keyCode === KEY_TAB) {
+    e.preventDefault();
+    sidebar.classList.toggle("sidebar-close");
+    hamburger.classList.toggle("is-active");
   }
 }
 
@@ -233,4 +242,9 @@ function debounce(func, wait, immediate) {
     timeout = setTimeout(later, wait);
     if (callNow) func.apply(context, args);
   };
+}
+
+function hamburgerToggle() {
+  console.log("l");
+  sidebar.classList.toggle("sidebar-close");
 }
