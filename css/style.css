@@ -33,26 +33,14 @@ li {
 }
 
 /*gradient*/
-
-.bg-blue-gradient {
-  background: rgb(39, 57, 126);
-  background: linear-gradient(
-    175deg,
-    rgba(39, 57, 126, 1) 0%,
-    rgba(4, 152, 202, 1) 100%,
-    rgba(2, 0, 36, 1) 100%
-  );
-}
-
 #gradient-pallet {
   width: 233px;
+  height: 40px;
   position: fixed;
   bottom: 10px;
-  /* border: 1px solid red; */
 }
 
 #gradient-pallet .pallet {
-  /* border: 1px solid yellow; */
   width: 150px;
   margin: 0 auto;
   opacity: 0;
@@ -87,19 +75,45 @@ li {
 }
 
 .bg-gradient-blue {
-  background: blue;
+  background: linear-gradient(
+    175deg,
+    rgba(39, 57, 126, 1) 0%,
+    rgba(4, 152, 202, 1) 100%,
+    rgba(2, 0, 36, 1) 100%
+  );
 }
 
 .bg-gradient-red {
-  background: red;
+  background: rgb(214, 24, 105);
+  background: linear-gradient(
+    180deg,
+    rgba(214, 24, 105, 1) 0%,
+    rgba(240, 76, 65, 1) 70%,
+    rgba(241, 93, 56, 1) 100%,
+    rgba(2, 0, 36, 1) 100%
+  );
 }
 
 .bg-gradient-purple {
-  background: purple;
+  background: rgb(73, 81, 152);
+  background: linear-gradient(
+    180deg,
+    rgba(73, 81, 152, 1) 0%,
+    rgba(202, 22, 195, 1) 73%,
+    rgba(241, 93, 56, 1) 100%,
+    rgba(234, 57, 237, 1) 100%
+  );
 }
 
 .bg-gradient-pink {
-  background: pink;
+  background: rgb(225, 30, 116);
+  background: linear-gradient(
+    180deg,
+    rgba(225, 30, 116, 1) 0%,
+    rgba(231, 74, 150, 1) 40%,
+    rgba(241, 93, 56, 1) 100%,
+    rgba(230, 127, 179, 1) 100%
+  );
 }
 
 .bg-gradient-orange {
