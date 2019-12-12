@@ -8,6 +8,7 @@ const arrowRight = document.getElementById("arrow-right");
 const slideLinks = document.getElementsByClassName("slideLink");
 const slides = document.getElementsByClassName("slides");
 const topicContainer = document.getElementById("topic-container");
+const topicTitles = document.getElementsByClassName("topic-title");
 const slideShowContainer = document.getElementById("slide-show-container");
 const sidebar = document.getElementById("sidebar");
 const pageCounter = document.getElementById("page-counter");
@@ -19,7 +20,20 @@ const SLIDE_TYPE = {
   Right: "right"
 };
 
+const gradients = [
+  "bg-gradient-1",
+  "bg-gradient-2",
+  "bg-gradient-3",
+  "bg-gradient-4"
+];
+
+const backgrounds = ["bg1", "bg2", "bg3", "bg4"];
+const indicators = ["active-slide-indicator", "active-slide-indicator2"];
+
 var slideIndex = 0;
+var currentSidebarGradient = gradients[0];
+var currentTopicTitleBackground = backgrounds[0];
+var currentIndicatorColor = indicators[0];
 
 (function() {
   init();
@@ -139,9 +153,7 @@ function hide(slides) {
 }
 
 function show(slides, index) {
-  //expand subtopics of active-slide-indicator
   expandSubtopicOfActiveSlide(slides, index);
-
   if (slides.length > 0) {
     slides[index].style.display = "block";
     slides[index].style.position = "absolute";
@@ -156,6 +168,7 @@ function expandSubtopicOfActiveSlide(slides, index) {
   if (!topicTitle.classList.contains("open")) {
     closeAllSubTopics();
     topicTitle.classList.add("open");
+    topicTitle.classList.add(currentTopicTitleBackground);
     if (subTopic.style.maxHeight) {
       subTopic.style.maxHeight = null;
     } else {
@@ -180,12 +193,12 @@ function boundCheck(index, lowBound, highBound) {
 }
 
 function updateSlideIndicator(index) {
-  var slideLinks = document.getElementsByClassName("slideLink");
+  // var slideLinks = document.getElementsByClassName("slideLink");
   if (slideLinks.length > 0) {
     for (let i = 0; i < slideLinks.length; ++i) {
-      slideLinks[i].classList.remove("active-slide-indicator");
+      slideLinks[i].classList.remove(currentIndicatorColor);
     }
-    slideLinks[index].classList.add("active-slide-indicator");
+    slideLinks[index].classList.add(currentIndicatorColor);
   }
 }
 
@@ -207,7 +220,6 @@ function updateSlideAnimation(slideType) {
 }
 
 function initTopicTitlesClick() {
-  var topicTitles = document.getElementsByClassName("topic-title");
   if (topicTitles.length > 0) {
     for (let i = 0; i < topicTitles.length; ++i) {
       topicTitles[i].onclick = debounce(handleTopicTitlesClick, 250, true);
@@ -226,7 +238,6 @@ function handleTopicTitlesClick(e) {
 }
 
 function closeAllSubTopics() {
-  var topicTitles = document.getElementsByClassName("topic-title");
   if (topicTitles.length > 0) {
     for (let i = 0; i < topicTitles.length; ++i) {
       topicTitles[i].classList.remove("open");
@@ -245,9 +256,9 @@ function initSlideLinks() {
 
 function handleSlideLinkClick(e) {
   for (let i = 0; i < slideLinks.length; ++i) {
-    slideLinks[i].classList.remove("active-slide-indicator");
+    slideLinks[i].classList.remove(currentIndicatorColor);
   }
-  e.target.classList.add("active-slide-indicator");
+  e.target.classList.add(currentIndicatorColor);
   var beforeIndex = slideIndex;
   slideIndex = e.target.index;
 
@@ -277,20 +288,46 @@ function debounce(func, wait, immediate) {
 function initSidebarGradientPallet() {
   if (sidebarGradients.length > 0) {
     for (let i = 0; i < sidebarGradients.length; ++i) {
+      sidebarGradients[i].index = i;
       sidebarGradients[i].onclick = gradientSelect;
     }
   }
 }
 
 function gradientSelect(e) {
-  console.log(e);
-  console.log(e.target);
-  clearGradientSelect();
-  e.target.classList.add("selected");
+  updateGradientSelect(e);
+  updateSidebarGradientBackground(e);
+  updateLinkIndicator(e);
 }
 
-function clearGradientSelect() {
+function updateGradientSelect(e) {
   for (let i = 0; i < sidebarGradients.length; ++i) {
     sidebarGradients[i].classList.remove("selected");
   }
+  e.target.classList.add("selected");
+}
+
+function updateSidebarGradientBackground(e) {
+  var previousGradient = currentSidebarGradient;
+  currentSidebarGradient = gradients[e.target.index];
+  sidebar.classList.remove(previousGradient);
+  sidebar.classList.add(currentSidebarGradient);
+
+  var previousTopicTitleBackgorund = currentTopicTitleBackground;
+  currentTopicTitleBackground = backgrounds[e.target.index];
+
+  for (let i = 0; i < topicTitles.length; ++i) {
+    topicTitles[i].classList.remove(previousTopicTitleBackgorund);
+    topicTitles[i].classList.add(currentTopicTitleBackground);
+  }
+}
+
+function updateLinkIndicator(e) {
+  var previousIndicatorColor = currentIndicatorColor;
+  currentIndicatorColor = e.target.index < 2 ? indicators[0] : indicators[1];
+
+  for (let i = 0; i < slideLinks.length; ++i) {
+    slideLinks[i].classList.remove(previousIndicatorColor);
+  }
+  slideLinks[slideIndex].classList.add(currentIndicatorColor);
 }

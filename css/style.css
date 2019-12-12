@@ -34,11 +34,21 @@ li {
 
 /*gradient*/
 #gradient-pallet {
-  /* border: 1px solid red; */
   width: 300px;
   height: 100px;
   position: fixed;
   bottom: 0;
+  transition: 0.2s;
+}
+
+#gradient-pallet:hover {
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(0, 0, 0, 0.3) 100%,
+    rgba(241, 93, 56, 0.5) 100%
+  );
 }
 
 #gradient-pallet .pallet {
@@ -86,13 +96,11 @@ li {
 }
 
 .bg-gradient-2 {
-  background: rgb(214, 24, 105);
+  background: rgb(56, 239, 207);
   background: linear-gradient(
     180deg,
-    rgba(214, 24, 105, 1) 0%,
-    rgba(240, 76, 65, 1) 70%,
-    rgba(241, 93, 56, 1) 100%,
-    rgba(2, 0, 36, 1) 100%
+    rgba(0, 98, 174, 1) 0%,
+    rgba(56, 239, 207, 1) 100%
   );
 }
 
@@ -111,10 +119,10 @@ li {
   background: rgb(255, 170, 103);
   background: linear-gradient(
     180deg,
-    rgba(255, 170, 103, 1) 0%,
-    rgba(248, 107, 93, 1) 38%,
-    rgba(243, 78, 142, 1) 51%,
-    rgba(93, 47, 156, 1) 100%
+    rgba(93, 47, 156, 1) 0%,
+    rgba(243, 78, 142, 1) 40%,
+    rgba(248, 107, 93, 1) 50%,
+    rgba(255, 170, 103, 1) 100%
   );
 }
 
@@ -137,9 +145,9 @@ li {
 }
 
 .logo-container h1 {
-  font-size: 18px;
+  font-size: 24px;
   font-weight: bold;
-  padding-top: 15px;
+  padding-top: 25px;
   margin-left: 5px;
   min-width: 160px;
 }
@@ -176,19 +184,45 @@ li {
   line-height: 44px;
   padding-left: 35px;
   position: relative;
-  background: rgba(107, 168, 224, 0.6);
   overflow: hidden;
   cursor: pointer;
   transition: 0.3s;
 }
 
-#topic-container > div:nth-child(5) > div.sub-topics {
-  margin-bottom: 50px;
+.open.bg1 {
+  background: rgba(107, 168, 224, 0.6);
 }
 
-.topic-title:hover,
-.open {
+.open.bg2 {
+  background: rgba(15, 94, 142, 0.6);
+}
+
+.open.bg3 {
+  background: rgba(104, 39, 132, 0.6);
+}
+
+.open.bg4 {
+  background: rgba(112, 41, 112, 0.6);
+}
+
+.topic-title.bg1:hover {
   background: rgba(107, 168, 224, 1);
+}
+
+.topic-title.bg2:hover {
+  background: rgba(15, 94, 142, 1);
+}
+
+.topic-title.bg3:hover {
+  background: rgba(104, 39, 132, 1);
+}
+
+.topic-title.bg4:hover {
+  background: rgba(112, 41, 112, 1);
+}
+
+#topic-container > div:nth-child(5) > div.sub-topics {
+  margin-bottom: 50px;
 }
 
 .sub-topics {
@@ -212,10 +246,11 @@ li {
 
 .slideLink {
   cursor: pointer;
+  transition: 0.3s;
 }
 
 .slideLink:hover {
-  color: #bddaf9;
+  font-weight: bold;
 }
 
 .slideLink:before {
@@ -230,7 +265,11 @@ li {
 }
 
 .active-slide-indicator:before {
-  background: #e85454;
+  background: rgb(232, 84, 84);
+}
+
+.active-slide-indicator2:before {
+  background: rgb(107, 44, 130);
 }
 
 .slide-shows {
@@ -337,18 +376,5 @@ li {
   from {
     transform: scale(-2, 2);
     fill: #5b5b5b;
-  }
-}
-
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(100px);
-  }
-}
-
-@keyframes stepsFadeIn {
-  to {
-    opacity: 1;
   }
 }
