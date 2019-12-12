@@ -34,24 +34,25 @@ li {
 
 /*gradient*/
 #gradient-pallet {
-  width: 233px;
-  height: 40px;
+  /* border: 1px solid red; */
+  width: 300px;
+  height: 100px;
   position: fixed;
-  bottom: 10px;
+  bottom: 0;
 }
 
 #gradient-pallet .pallet {
   width: 150px;
+  padding: 10px;
   margin: 0 auto;
-  opacity: 0;
   position: relative;
-  bottom: -50px;
-  transition: 0.3s;
+  transform: translateY(100px);
+  transition: 0.3s ease-out;
 }
 
 #gradient-pallet:hover .pallet {
-  bottom: 0;
   opacity: 1;
+  transform: translateY(30px);
 }
 
 .sidebar-gradient {
@@ -68,13 +69,14 @@ li {
   transform: rotate(45deg);
 }
 
+.sidebar-gradient.selected,
 .pallet li:hover {
   cursor: pointer;
   border: 2px solid white;
   padding: 0;
 }
 
-.bg-gradient-blue {
+.bg-gradient-1 {
   background: linear-gradient(
     175deg,
     rgba(39, 57, 126, 1) 0%,
@@ -83,7 +85,7 @@ li {
   );
 }
 
-.bg-gradient-red {
+.bg-gradient-2 {
   background: rgb(214, 24, 105);
   background: linear-gradient(
     180deg,
@@ -94,7 +96,7 @@ li {
   );
 }
 
-.bg-gradient-purple {
+.bg-gradient-3 {
   background: rgb(73, 81, 152);
   background: linear-gradient(
     180deg,
@@ -105,14 +107,14 @@ li {
   );
 }
 
-.bg-gradient-pink {
-  background: rgb(225, 30, 116);
+.bg-gradient-4 {
+  background: rgb(255, 170, 103);
   background: linear-gradient(
     180deg,
-    rgba(225, 30, 116, 1) 0%,
-    rgba(231, 74, 150, 1) 40%,
-    rgba(241, 93, 56, 1) 100%,
-    rgba(230, 127, 179, 1) 100%
+    rgba(255, 170, 103, 1) 0%,
+    rgba(248, 107, 93, 1) 38%,
+    rgba(243, 78, 142, 1) 51%,
+    rgba(93, 47, 156, 1) 100%
   );
 }
 
@@ -144,12 +146,11 @@ li {
 
 /*sidebar*/
 .sidebar {
-  display: block;
-  color: #fff;
-  min-width: 250px;
-  width: 300px;
   width: 300px;
   height: 100vh;
+  min-width: 300px;
+  display: block;
+  color: #fff;
   overflow-y: auto;
   overflow-x: hidden;
   transition: 0.3s ease-out;
@@ -336,5 +337,18 @@ li {
   from {
     transform: scale(-2, 2);
     fill: #5b5b5b;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+}
+
+@keyframes stepsFadeIn {
+  to {
+    opacity: 1;
   }
 }

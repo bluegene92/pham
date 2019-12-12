@@ -11,6 +11,7 @@ const topicContainer = document.getElementById("topic-container");
 const slideShowContainer = document.getElementById("slide-show-container");
 const sidebar = document.getElementById("sidebar");
 const pageCounter = document.getElementById("page-counter");
+const sidebarGradients = document.getElementsByClassName("sidebar-gradient");
 const IMAGE_PATH = "./assets/slides/";
 
 const SLIDE_TYPE = {
@@ -32,6 +33,7 @@ function init() {
   document.onkeydown = keyDetection;
   initTopicTitlesClick();
   initSlideLinks();
+  initSidebarGradientPallet();
 }
 
 function loadDataAndBuildTemplate() {
@@ -137,9 +139,28 @@ function hide(slides) {
 }
 
 function show(slides, index) {
+  //expand subtopics of active-slide-indicator
+  expandSubtopicOfActiveSlide(slides, index);
+
   if (slides.length > 0) {
     slides[index].style.display = "block";
     slides[index].style.position = "absolute";
+  }
+}
+
+function expandSubtopicOfActiveSlide(slides, index) {
+  var topicTitle =
+    slideLinks[index].parentElement.parentElement.previousElementSibling;
+  var subTopic = slideLinks[index].parentElement.parentElement;
+
+  if (!topicTitle.classList.contains("open")) {
+    closeAllSubTopics();
+    topicTitle.classList.add("open");
+    if (subTopic.style.maxHeight) {
+      subTopic.style.maxHeight = null;
+    } else {
+      subTopic.style.maxHeight = subTopic.scrollHeight + "px";
+    }
   }
 }
 
@@ -204,6 +225,17 @@ function handleTopicTitlesClick(e) {
   }
 }
 
+function closeAllSubTopics() {
+  var topicTitles = document.getElementsByClassName("topic-title");
+  if (topicTitles.length > 0) {
+    for (let i = 0; i < topicTitles.length; ++i) {
+      topicTitles[i].classList.remove("open");
+      var subTopic = topicTitles[i].nextElementSibling;
+      subTopic.style.maxHeight = null;
+    }
+  }
+}
+
 function initSlideLinks() {
   for (let i = 0; i < slideLinks.length; ++i) {
     slideLinks[i].index = i;
@@ -240,4 +272,25 @@ function debounce(func, wait, immediate) {
     timeout = setTimeout(later, wait);
     if (callNow) func.apply(context, args);
   };
+}
+
+function initSidebarGradientPallet() {
+  if (sidebarGradients.length > 0) {
+    for (let i = 0; i < sidebarGradients.length; ++i) {
+      sidebarGradients[i].onclick = gradientSelect;
+    }
+  }
+}
+
+function gradientSelect(e) {
+  console.log(e);
+  console.log(e.target);
+  clearGradientSelect();
+  e.target.classList.add("selected");
+}
+
+function clearGradientSelect() {
+  for (let i = 0; i < sidebarGradients.length; ++i) {
+    sidebarGradients[i].classList.remove("selected");
+  }
 }
