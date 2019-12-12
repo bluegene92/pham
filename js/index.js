@@ -134,6 +134,7 @@ function keyDetection(e) {
   if (e.keyCode === KEY_TAB) {
     e.preventDefault();
     sidebar.classList.toggle("sidebar-close");
+    showSlide(slideIndex);
   }
 }
 
@@ -153,14 +154,14 @@ function hide(slides) {
 }
 
 function show(slides, index) {
-  expandSubtopicOfActiveSlide(slides, index);
+  expandSubtopicOfActiveSlide(index);
   if (slides.length > 0) {
     slides[index].style.display = "block";
     slides[index].style.position = "absolute";
   }
 }
 
-function expandSubtopicOfActiveSlide(slides, index) {
+function expandSubtopicOfActiveSlide(index) {
   var topicTitle =
     slideLinks[index].parentElement.parentElement.previousElementSibling;
   var subTopic = slideLinks[index].parentElement.parentElement;
@@ -193,7 +194,6 @@ function boundCheck(index, lowBound, highBound) {
 }
 
 function updateSlideIndicator(index) {
-  // var slideLinks = document.getElementsByClassName("slideLink");
   if (slideLinks.length > 0) {
     for (let i = 0; i < slideLinks.length; ++i) {
       slideLinks[i].classList.remove(currentIndicatorColor);
